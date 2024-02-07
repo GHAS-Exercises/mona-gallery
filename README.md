@@ -14,7 +14,7 @@
 
 ### Introduction
 
-This repository contains the source code for the `Mona Gallery` vulnerable web application. The exercises for this workshop can be found in the `exercises.md` file. 
+This repository contains the source code for the `Mona Gallery` vulnerable web application. The exercises for this workshop can be found in the `exercises.md` files. 
 
 ### Prerequisites
 
