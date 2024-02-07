@@ -305,8 +305,15 @@ func (p *ArtPiece) Create(gallery Gallery) error {
 func (p ArtPiece) Update(gallery Gallery) error {
 	db := GetDb()
 
-	query := fmt.Sprintf("UPDATE art_piece SET title = '%s', description = '%s', stars = '%d', uri = '%s' WHERE id = %d and gallery_id = '%d'", p.Title, p.Description, p.Stars, p.Uri, p.ID, gallery.ID)
+	query := "UPDATE art_piece SET title = ?, description = ?, stars = ?, uri = ? WHERE id = ? and gallery_id = ?"
 	stmt, err := db.Prepare(query)
+	if err != nil {
+		log.Fatal(err)
+	}
+	_, err = stmt.Exec(p.Title, p.Description, p.Stars, p.Uri, p.ID, gallery.ID)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	if err != nil {
 		return err
